@@ -16,6 +16,16 @@ if (
   );
 }
 
+// // for matt working from home
+// const pool = new Pool({
+//   // ssl: { rejectUnauthorized: false }
+//   host: "localhost",
+//   port: 5432,
+//   database: "onlinePizza",
+//   user: "postgres",
+//   password: "postgres"
+// });
+
 module.exports = {
   query: (text, params) => {
     console.log('QUERY:', text);

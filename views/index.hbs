@@ -2,6 +2,8 @@
     <h2>Delicious Pizza, Delivered to Your Door</h2>
     <p>Order now and enjoy our special deals of the day!</p>
     <a href="/menu" class="button">View Menu</a>
+    <a href="/users/login">Login</a>
+    <a href="/users/register">Register</a>
 </div>
 
 <div class="deals">
@@ -15,3 +17,7 @@
         <p>Enjoy a medium Veggie Delight Pizza for just $8!</p>
     </div>
 </div>
+
+{{#if user}}
+<a href="/users/logout">Logout</a>
+{{/if}}
