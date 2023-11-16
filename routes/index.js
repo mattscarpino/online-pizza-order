@@ -1,4 +1,5 @@
 const express = require('express');
+const db = require('../db');
 
 const router = express.Router();
 
@@ -9,6 +10,24 @@ router.get('/', (req, res) => {
     user = true;
   }
   res.render('index', { title: 'Express', user });
+});
+
+router.get('/menu', async (req, res) => {
+  if (req.session.user) {
+    const user = true;
+
+    const sql =
+      'SELECT name, description, category, image FROM products ORDER BY category;';
+    const results = await db.query(sql);
+
+    res.render('menu', {
+      title: 'Pizza Paradise',
+      products: results.rows,
+      user,
+    });
+  } else {
+    res.redirect('users/login');
+  }
 });
 
 module.exports = router;
