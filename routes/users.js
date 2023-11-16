@@ -56,6 +56,8 @@ router.post('/register', async (req, res) => {
   }
 });
 
+// login and logout routes completed
+
 // load login page
 router.get('/login', (req, res) => {
   res.render('login', { title: 'Express' });
