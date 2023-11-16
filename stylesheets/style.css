@@ -52,6 +52,7 @@ footer {
 
 /* Styling for the hero section */
 .hero {
+  margin-top: 5em;
   background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.foodandwine.com%2Frecipes%2Fclassic-cheese-pizza&psig=AOvVaw1vCUWjv4zCOrjxmOGdIuAo&ust=1700070013325000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKiD-byExIIDFQAAAAAdAAAAABAD');
   background-size: cover;
   background-position: center;

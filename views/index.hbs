@@ -1,49 +1,68 @@
-<div class="hero">
+<div class="hero" style="margin-top: 1em;">
     <h2>Delicious Pizza, Delivered to Your Door</h2>
     <p>Order now and enjoy our special deals of the day!</p>
-    <a href="/menu" class="button">View Menu</a>
-    <a href="/users/login">Login</a>
-    <a href="/users/register">Register</a>
 </div>
 
 <div class="sections">
-    <div class="section">
-        <h2>Menu</h2>
-        <p>Explore our diverse menu featuring a wide variety of mouthwatering pizzas, sides, and beverages. We have
-            options for every pizza lover!</p>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Menu</h1>
+            <p class="lead">Explore our diverse menu featuring a wide variety of mouthwatering pizzas, sides, and
+                beverages. We have
+                options for every pizza lover!</p>
+        </div>
     </div>
 
-    <div class="section">
-        <h2>About Us</h2>
-        <p>Discover the story of Pizza Paradise, where we have been crafting delicious pizzas with passion and
-            dedication for over a decade.</p>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">About Us</h1>
+            <p class="lead">Discover the story of Pizza Paradise, where we have been crafting delicious pizzas with
+                passion and
+                dedication for over a decade.</p>
+        </div>
     </div>
 
-    <div class="section">
-        <h2>Contact</h2>
-        <p>Have questions or feedback? Feel free to reach out to us. Our friendly customer support team is here to
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Deals</h1>
+            <p class="lead">Check out our daily deals and promotions. We offer great discounts on your favorite pizzas
+                and combos, so you
+                can enjoy more for less!</p>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="deals" style="margin-left: 1em;">
+    <h2>Deals of the Day</h2>
+
+    <div class="card" style="display: inline-block; padding: 1em; margin-right: 1em;">
+        <div class="card-body">
+            <h5 class="card-title">Pepperoni Lover's Pizza</h5>
+            <p class="card-text">Get a large Pepperoni Lover's Pizza for only $10!</p>
+
+        </div>
+    </div>
+
+
+    <div class="card" style="display: inline-block; padding: 1em;">
+        <div class="card-body">
+            <h5 class="card-title">Veggie Delight</h5>
+            <p class="card-text">Enjoy a medium Veggie Delight Pizza for just $8!</p>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Contact</h1>
+        <p class="lead">Have questions or feedback? Feel free to reach out to us. Our friendly customer support team is
+            here to
             assist you.</p>
     </div>
-
-    <div class="section">
-        <h2>Deals</h2>
-        <p>Check out our daily deals and promotions. We offer great discounts on your favorite pizzas and combos, so you
-            can enjoy more for less!</p>
-    </div>
 </div>
-
-<div class="deals">
-    <h2>Deals of the Day</h2>
-    <div class="deal-item">
-        <h3>1. Pepperoni Lover's Pizza</h3>
-        <p>Get a large Pepperoni Lover's Pizza for only $10!</p>
-    </div>
-    <div class="deal-item">
-        <h3>2. Veggie Delight</h3>
-        <p>Enjoy a medium Veggie Delight Pizza for just $8!</p>
-    </div>
-</div>
-
-{{#if user}}
-<a href="/users/logout">Logout</a>
-{{/if}}
