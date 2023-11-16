@@ -4,6 +4,8 @@ const db = require('../db');
 
 const router = express.Router();
 
+// registration routes completed
+
 // load register page
 router.get('/register', (req, res) => {
   res.render('register', { title: 'Express' });
