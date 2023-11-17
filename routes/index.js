@@ -12,6 +12,8 @@ router.get('/', (req, res) => {
   res.render('index', { title: 'Express', user });
 });
 
+// menu route completed
+
 router.get('/menu', async (req, res) => {
   if (req.session.user) {
     const user = true;
