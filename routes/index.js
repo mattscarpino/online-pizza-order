@@ -34,4 +34,22 @@ router.get('/menu', async (req, res) => {
   }
 });
 
+router.get('/cartSummary', async (req, res) => {
+  if (req.session.user) {
+    const user = true;
+
+    const count = req.session.cartCount;
+    const allItems = req.session.cart;
+
+    res.render('cartSummary', {
+      title: 'Pizza Paradise',
+      cart: allItems,
+      itemCount: count,
+      user,
+    });
+  } else {
+    res.redirect('users/login');
+  }
+});
+
 module.exports = router;

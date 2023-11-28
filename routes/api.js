@@ -22,7 +22,7 @@ router.post('/cart', async (req, res) => {
         "quantity": num,
     };
     req.session.nextCartId++;
-    req.session.cartCount++;
+    req.session.cartCount += parseInt(num);
     req.session.cart.push(item);
     // res.send(console.log(req.session.cart));
     res.send({ cartCount: req.session.cartCount, cart: req.session.cart });
