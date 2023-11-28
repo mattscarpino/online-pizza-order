@@ -12,7 +12,8 @@ router.post('/cart', async (req, res) => {
     const sql = "SELECT name FROM products WHERE id = " + product;
     const result = await db.query(sql);
 
-
+    const customizations = req.body.customizations || [];
+    item.customizations = customizations.map(id => ({ id: id }));
 
     const item = {
         "cart_id": req.session.nextCartId,
@@ -25,6 +26,16 @@ router.post('/cart', async (req, res) => {
     req.session.cart.push(item);
     // res.send(console.log(req.session.cart));
     res.send({ cartCount: req.session.cartCount, cart: req.session.cart });
+});
+
+// Endpoint to get customization options
+router.get('/customizations', async (req, res) => {
+    try {
+        const result = await db.query('SELECT * FROM customizations');
+        res.json(result.rows);
+    } catch (err) {
+        res.status(500).send('Server error');
+    }
 });
 
 
