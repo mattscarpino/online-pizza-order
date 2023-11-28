@@ -19,13 +19,15 @@ router.get('/menu', async (req, res) => {
     const user = true;
 
     const sql =
-      'SELECT name, description, category, image FROM products ORDER BY category;';
+      'SELECT id, name, description, category, image FROM products ORDER BY category;';
     const results = await db.query(sql);
+    const count = req.session.cartCount;
 
     res.render('menu', {
       title: 'Pizza Paradise',
       products: results.rows,
       user,
+      itemCount: count
     });
   } else {
     res.redirect('users/login');

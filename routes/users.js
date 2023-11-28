@@ -79,6 +79,9 @@ router.post('/login', async (req, res) => {
     if (auth) {
       [req.session.user] = selectResult.rows;
       console.log(req.session.user);
+      req.session.cart = [];
+      req.session.cartCount = 0;
+      req.session.nextCartId = 1;
       req.session.save(() => res.redirect('/'));
     } else {
       errors.push('Incorrect username/password');

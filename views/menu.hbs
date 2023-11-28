@@ -1,6 +1,7 @@
 {{!-- menu completed --}}
 
 <h1 style="text-align: center;">Menu</h1>
+<h3 id="cart">Cart({{itemCount}})</h3>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
 
@@ -8,16 +9,19 @@
 
     <div class="col">
         <div class="card h-100">
-            <img class=" card-img-top" src="{{image}}" alt="Image Not Found">
+            {{!-- <img class=" card-img-top" src="{{image}}" alt="Image Not Found"> --}}
             <div class="card-body">
                 <h5 class="card-title">{{name}}</h5>
                 <p class="card-text">{{description}}</p>
+
+                <button class="btn btn-primary" type="button" onclick="addItem({{id}}, {{itemCount}})">Add To
+                    Cart</button>
             </div>
             <div class="card-footer">
                 <small class="text-muted">{{category}}</small>
             </div>
+
         </div>
     </div>
-
     {{/each}}
 </div>
