@@ -11,6 +11,31 @@ async function addItem(id, itemCount) {
         product_id: id,
         quantity: value
     });
-    itemCount = req.data.cartCount;
-    return itemCount;
+
+    let del = document.getElementById('cart');
+    del.innerHTML = 'View Cart (' + result.data.cartCount + ')';
+
+}
+
+
+async function addCustomPizzaToCart() {
+    let checkedBoxes = document.querySelectorAll("input[type='checkbox']:checked");
+    let checkedValues = Array.from(checkedBoxes).map(checkbox => checkbox.value);
+    // console.log(checkedValues); // This will log an array of the checked checkbox values
+
+
+    const result = await axios.post('/api/cart/custom', {
+        customizations: checkedValues
+    });
+
+
+
+    for (let i = 0; checkedBoxes.length; i++) {
+        checkedBoxes[i].checked = false;
+    }
+
+
+    let del = document.getElementById('cart');
+    del.innerHTML = 'View Cart (' + result.data.cartCount + ')';
+
 }

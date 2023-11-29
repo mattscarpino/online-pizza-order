@@ -11,6 +11,9 @@
             {{!-- <img class=" card-img-top" src="{{image}}" alt="Image Not Found"> --}}
             <div class="card-body">
                 <h5 class="card-title">{{name}}</h5>
+                {{#if custom}}
+                <p class="card-text">{{customizations}}</p>
+                {{/if}}
             </div>
             <div class="card-footer">
                 <small class="text-muted">Quantity: {{quantity}}</small>

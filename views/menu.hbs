@@ -1,7 +1,7 @@
 {{!-- menu completed --}}
 
 <h1 style="text-align: center;">Menu</h1>
-<h3><a href="/cartSummary" id="cart">Cart({{itemCount}})</a></h3>
+<a href="/cartSummary" id="cart" style="font-size: 2em;">View Cart ({{itemCount}})</a>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
 
@@ -15,7 +15,7 @@
                 <p class="card-text">{{description}}</p>
 
                 <label for="howMany{{id}}">Amount:</label>
-                <select name="howMany{{id}}" id="howMany{{id}}"
+                <select class="select" name="howMany{{id}}" id="howMany{{id}}"
                     style="width: 5em; text-align: center; margin-left: 1em">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -43,9 +43,14 @@
 <!-- Custom Pizza Builder Section -->
 <div id="customPizzaBuilder">
     <h3>Build Your Own Pizza</h3>
+    {{#each toppings}}
     <div id="customizationOptions">
-        <!-- Customization options will be populated here -->
+
+        <input type="checkbox" id="checkbox{{id}}" name="checkbox" value="{{name}}">
+        <label for="checkbox{{id}}">{{name}}</label>
+
     </div>
-    <button id="addCustomPizza" class="btn btn-primary">Add Custom Pizza to Cart</button>
+    {{/each}}
+    <button id="addCustomPizza" class="btn btn-primary" onclick="addCustomPizzaToCart()">Add Custom Pizza to
+        Cart</button>
 </div>
-<script src="../routes/customPizza.js"></script>

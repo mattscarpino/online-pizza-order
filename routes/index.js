@@ -17,19 +17,21 @@ router.get('/', (req, res) => {
 router.get('/menu', async (req, res) => {
   if (req.session.user) {
     const user = true;
-
+    let name = 'Build Your Own!';
     const sql =
-      'SELECT id, name, description, category, image FROM products ORDER BY category;';
+      "SELECT id, name, description, category, image FROM products WHERE NOT name = '" + name + "' ORDER BY category;";
     const results = await db.query(sql);
     const count = req.session.cartCount;
-    console.log("Results: ");
-    console.log(results.rows);
+
+    const tops = 'SELECT id, name, category FROM customizations ORDER BY id;';
+    const custom = await db.query(tops);
 
     res.render('menu', {
       title: 'Pizza Paradise',
       products: results.rows,
       user,
-      itemCount: count
+      itemCount: count,
+      toppings: custom.rows
     });
   } else {
     res.redirect('users/login');
