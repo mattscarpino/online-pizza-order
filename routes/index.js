@@ -22,6 +22,8 @@ router.get('/menu', async (req, res) => {
       'SELECT id, name, description, category, image FROM products ORDER BY category;';
     const results = await db.query(sql);
     const count = req.session.cartCount;
+    console.log("Results: ");
+    console.log(results.rows);
 
     res.render('menu', {
       title: 'Pizza Paradise',

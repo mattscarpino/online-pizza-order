@@ -46,3 +46,4 @@ function addCustomPizzaToCart() {
             console.error('Error adding custom pizza to cart:', error);
         });
 }
+
