@@ -1,41 +1,40 @@
+/* eslint-disable no-undef */
+// const { default: axios } = require('axios');
 
 // eslint-disable-next-line no-unused-vars
 async function addItem(id, itemCount) {
-    // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars
 
-    let num = document.getElementById('howMany' + id);
-    let value = num.value;
+  const num = document.getElementById('howMany' + id);
+  const { value } = num;
 
+  const result = await axios.post('/api/cart', {
+    product_id: id,
+    quantity: value,
+  });
 
-    const result = await axios.post('/api/cart', {
-        product_id: id,
-        quantity: value
-    });
-
-    let del = document.getElementById('cart');
-    del.innerHTML = 'View Cart (' + result.data.cartCount + ')';
-
+  const del = document.getElementById('cart');
+  del.innerHTML = 'View Cart (' + result.data.cartCount + ')';
 }
 
-
+// eslint-disable-next-line no-unused-vars
 async function addCustomPizzaToCart() {
-    let checkedBoxes = document.querySelectorAll("input[type='checkbox']:checked");
-    let checkedValues = Array.from(checkedBoxes).map(checkbox => checkbox.value);
-    // console.log(checkedValues); // This will log an array of the checked checkbox values
+  const checkedBoxes = document.querySelectorAll(
+    "input[type='checkbox']:checked"
+  );
+  const checkedValues = Array.from(checkedBoxes).map(
+    (checkbox) => checkbox.value
+  );
+  // console.log(checkedValues); // This will log an array of the checked checkbox values
 
+  const result = await axios.post('/api/cart/custom', {
+    customizations: checkedValues,
+  });
 
-    const result = await axios.post('/api/cart/custom', {
-        customizations: checkedValues
-    });
+  const del = document.getElementById('cart');
+  del.innerHTML = 'View Cart (' + result.data.cartCount + ')';
 
-
-
-    for (let i = 0; checkedBoxes.length; i++) {
-        checkedBoxes[i].checked = false;
-    }
-
-
-    let del = document.getElementById('cart');
-    del.innerHTML = 'View Cart (' + result.data.cartCount + ')';
-
+  for (let i = 0; checkedBoxes.length; i++) {
+    checkedBoxes[i].checked = false;
+  }
 }

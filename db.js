@@ -1,30 +1,31 @@
 const { Pool } = require('pg');
 
-// const pool = new Pool({ ssl: { rejectUnauthorized: false } });
+const pool = new Pool({ ssl: { rejectUnauthorized: false } });
 
-// if (
-//   !(
-//     process.env.PGUSER &&
-//     process.env.PGPASSWORD &&
-//     process.env.PGDATABASE &&
-//     process.env.PGHOST &&
-//     process.env.PGPORT
-//   )
-// ) {
-//   console.error(
-//     'Database settings are not set.  Confirm your .env file is correct.'
-//   );
-// }
+if (
+  !(
+    process.env.PGUSER &&
+    process.env.PGPASSWORD &&
+    process.env.PGDATABASE &&
+    process.env.PGHOST &&
+    process.env.PGPORT
+  )
+) {
+  console.error(
+    'Database settings are not set.  Confirm your .env file is correct.'
+  );
+}
 
-//for matt working from home
-const pool = new Pool({
-  // ssl: { rejectUnauthorized: false }
-  host: 'localhost',
-  port: 5432,
-  database: 'onlinePizza',
-  user: 'postgres',
-  password: 'postgres',
-});
+// for matt working from home //
+
+// const pool = new Pool({
+//   // ssl: { rejectUnauthorized: false }
+//   host: 'localhost',
+//   port: 5432,
+//   database: 'onlinePizza',
+//   user: 'postgres',
+//   password: 'postgres',
+// });
 
 module.exports = {
   query: (text, params) => {
