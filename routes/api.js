@@ -27,7 +27,7 @@ router.post('/cart', async (req, res) => {
 });
 
 router.post('/cart/custom', async (req, res) => {
-  const quantity = 1;
+  const num = 1;
   const toppings = req.body.customizations;
   const name = 'Build Your Own!';
   const sql = "SELECT id,name FROM products WHERE name = '" + name + "'";
@@ -37,7 +37,7 @@ router.post('/cart/custom', async (req, res) => {
     cart_id: req.session.nextCartId,
     product_id: result.rows[0].id,
     name: result.rows[0].name,
-    quantity: quantity,
+    quantity: num,
     customizations: toppings,
     custom: true,
   };
@@ -49,6 +49,30 @@ router.post('/cart/custom', async (req, res) => {
   res
     .status(201)
     .json({ cartCount: req.session.cartCount, cart: req.session.cart });
+});
+
+router.post('/update', async (req, res) => {
+  const product = req.body.cart_id;
+  const num = parseInt(req.body.quantity, 10);
+
+  for (let i = 0; i < req.session.cart.length; i++) {
+    if (product === req.session.cart[i].cart_id) {
+      if (num > req.session.cart.quantity) {
+        req.session.cartCount += num - req.session.cart[i].quantity;
+      } else {
+        req.session.cartCount -= req.session.cart[i].quantity - num;
+      }
+      req.session.cart[i].quantity = num;
+    }
+  }
+  // res.send(console.log(req.session.cart));
+  res
+    .status(200)
+    .json({
+      cartCount: req.session.cartCount,
+      cart: req.session.cart,
+      quantity: num,
+    });
 });
 
 module.exports = router;

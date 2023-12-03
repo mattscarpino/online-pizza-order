@@ -10,7 +10,7 @@ async function addItem(id, itemCount) {
 
   const result = await axios.post('/api/cart', {
     product_id: id,
-    quantity: value,
+    quantity: parseInt(value, 10),
   });
 
   const del = document.getElementById('cart');
@@ -37,4 +37,21 @@ async function addCustomPizzaToCart() {
   for (let i = 0; checkedBoxes.length; i++) {
     checkedBoxes[i].checked = false;
   }
+}
+
+// eslint-disable-next-line no-unused-vars
+async function updateAmount(id) {
+  const num = document.getElementById('amount' + id);
+  const { value } = num;
+
+  const result = await axios.post('/api/update', {
+    cart_id: id,
+    quantity: value,
+  });
+
+  const del = document.getElementById('totalItems');
+  del.innerHTML = 'Total Items: ' + result.data.cartCount;
+
+  const btm = document.getElementById('bottom' + id);
+  btm.innerHTML = 'Quantity: ' + result.data.quantity;
 }

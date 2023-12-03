@@ -1,6 +1,6 @@
 <h2>Ready to Check Out?</h2>
 
-<h4 style="margin-top: 1em;">Total Items: {{itemCount}}</h4>
+<h4 style="margin-top: 1em;" id="totalItems">Total Items: {{itemCount}}</h4>
 
 <div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top: .5em;">
 
@@ -15,9 +15,15 @@
                 {{#if custom}}
                 <p class="card-text">{{customizations}}</p>
                 {{/if}}
+                <label for="amount{{cart_id}}">Change Amount:</label>
+                <input type="text" name="amount" id="amount{{cart_id}}" value="{{quantity}}"
+                    style="width: 5em; text-align: center;">
+                <button class="btn btn-primary" type="button" onclick="updateAmount({{cart_id}})" style="float:right;">
+                    Update</button>
             </div>
+
             <div class="card-footer">
-                <small class="text-muted">Quantity: {{quantity}}</small>
+                <small class="text-muted" id="bottom{{cart_id}}">Quantity: {{quantity}}</small>
             </div>
         </div>
     </div>
