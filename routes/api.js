@@ -66,13 +66,31 @@ router.post('/update', async (req, res) => {
     }
   }
   // res.send(console.log(req.session.cart));
-  res
-    .status(200)
-    .json({
-      cartCount: req.session.cartCount,
-      cart: req.session.cart,
-      quantity: num,
-    });
+  res.status(200).json({
+    cartCount: req.session.cartCount,
+    cart: req.session.cart,
+    quantity: num,
+  });
+});
+
+router.post('/cart/:id', async (req, res) => {
+  let num = 0;
+  const id = parseInt(req.params.id, 10);
+
+  for (let i = 0; i < req.session.cart.length; i++) {
+    if (id === req.session.cart[i].cart_id) {
+      req.session.cartCount -= req.session.cart[i].quantity;
+      num = i;
+    }
+  }
+
+  const arrayList = req.session.cart;
+  arrayList.splice(num, 1);
+
+  // res.send(console.log(req.session.cart));
+  res.status(200).json({
+    cartCount: req.session.cartCount,
+  });
 });
 
 module.exports = router;

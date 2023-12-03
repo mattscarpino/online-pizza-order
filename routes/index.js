@@ -17,9 +17,11 @@ router.get('/', (req, res) => {
 router.get('/menu', async (req, res) => {
   if (req.session.user) {
     const user = true;
-    let name = 'Build Your Own!';
+    const name = 'Build Your Own!';
     const sql =
-      "SELECT id, name, description, category, image FROM products WHERE NOT name = '" + name + "' ORDER BY category;";
+      "SELECT id, name, description, category, image FROM products WHERE NOT name = '" +
+      name +
+      "' ORDER BY category;";
     const results = await db.query(sql);
     const count = req.session.cartCount;
 
@@ -31,7 +33,7 @@ router.get('/menu', async (req, res) => {
       products: results.rows,
       user,
       itemCount: count,
-      toppings: custom.rows
+      toppings: custom.rows,
     });
   } else {
     res.redirect('users/login');

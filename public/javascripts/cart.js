@@ -55,3 +55,14 @@ async function updateAmount(id) {
   const btm = document.getElementById('bottom' + id);
   btm.innerHTML = 'Quantity: ' + result.data.quantity;
 }
+
+// eslint-disable-next-line no-unused-vars
+async function deleteItems(id) {
+  const result = await axios.post('/api/cart/' + id, {});
+
+  const del = document.getElementById('totalItems');
+  del.innerHTML = 'Total Items: ' + result.data.cartCount;
+
+  const card = document.getElementById('card' + id);
+  card.remove();
+}
